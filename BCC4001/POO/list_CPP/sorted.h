@@ -63,7 +63,7 @@ class Solution {
             mergedList.inserir(list1->dado);
             list1 = list1->proximo;
         }
-        while(list1 != nullptr){
+        while(list2 != nullptr){
             mergedList.inserir(list2->dado);
             list2 = list2->proximo;
         }
