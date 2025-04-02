@@ -42,7 +42,7 @@ public:
             this->primeiro = n;
         }
         else{
-            this->ultimo->proximo;
+            this->ultimo->proximo = n;
         }
         this->ultimo = n;
         this->tamanho++;
