@@ -1,5 +1,7 @@
 //#include "list.h"
-#include "sum.h"
+//#include "sum.h"
+#include "isPalindrome.h"
+
 
 /*
 int main(){
@@ -16,6 +18,7 @@ int main(){
 }
 */
 
+/*
 int main(){
     int arr [] = {3, 4, 1, 6, 2, 0, 8, 6, 16, 52, 39, 24, -1};
     float u [] = {1.5, 1.4, 2.5};
@@ -39,5 +42,21 @@ int main(){
     std::cout << "A soma dos elementos do array de doubles é: " << resultado3 << std::endl;
     std::cout << "A soma dos elementos do array de uns char é: " << resultado4 << std::endl;
 
+    return 0;
+}
+*/
+
+int main() {
+    Solution sol;
+    string input;
+    cout << "Enter a string to check if it is a palindrome: ";
+    getline(cin, input);
+    
+    if (sol.isPalindrome(input)) {
+        cout << "The string is a palindrome." << endl;
+    } else {
+        cout << "The string is not a palindrome." << endl;
+    }
+    
     return 0;
 }
