@@ -1,6 +1,7 @@
 //#include "list.h"
 //#include "sum.h"
-#include "isPalindrome.h"
+//#include "isPalindrome.h"
+#include "singleNumber.h"
 
 
 /*
@@ -45,18 +46,23 @@ int main(){
     return 0;
 }
 */
-
-int main() {
-    Solution sol;
-    string input;
-    cout << "Enter a string to check if it is a palindrome: ";
-    getline(cin, input);
-    
-    if (sol.isPalindrome(input)) {
-        cout << "The string is a palindrome." << endl;
-    } else {
-        cout << "The string is not a palindrome." << endl;
+#include <iostream>
+int main(int argc, char* argv[]) {
+    if (argc < 2) {
+        cout << "Usage: ./main <list of numbers>\n";
+        return 1;
     }
-    
+
+    vector<int> nums;
+    for (int i = 1; i < argc; ++i) {
+        nums.push_back(atoi(argv[i])); // convert string args to int
+    }
+
+    Solution sol;
+    int result = sol.singleNumber(nums);
+
+    cout << "The single number is: " << result << endl;
+
     return 0;
 }
+
