@@ -21,8 +21,8 @@ void merge(int * v, int p, int q, int r) {
     //intercalar vetores E e D de volta em V
     while (i<n1 && j<n2){
         if(E[i] <= D[j]){
-        v[k] = E[i];
-        i++;
+            v[k] = E[i];
+            i++;
         } else{
                 v[k] = D[j];
                 j++;
