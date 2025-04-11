@@ -11,7 +11,7 @@ using namespace std;
 //Implemente a função max usada no algoritmo de ordenação por seleção 
 int max(int *v, int ini, int fim){
     int max = ini;
-    for(int i = ini+1; i<= fim; i ++){
+    for(int i = ini+1; i< fim; i ++){
         if(v[i] > v[max]){
             max = i;
         }
