@@ -59,28 +59,27 @@ void merge(int *v, int n){
     delete[] d;
 }
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        cout << "Uso: ./programa <numero_de_elementos>" << endl;
-        return 1;
-    }
+int main() {
+    int n;
+    cout << "Quantos elementos tem o vetor? ";
+    cin >> n;
 
-    int n = atoi(argv[1]); // converte o argumento para inteiro
-
-    // Agora você pode usar 'n' para gerar o vetor, por exemplo:
     int* v = new int[n];
 
-    // preencher com números aleatórios
+    cout << "Digite os " << n << " elementos do vetor:\n";
     for (int i = 0; i < n; i++) {
-        v[i] = rand(); // ou alguma outra lógica
+        cin >> v[i];
     }
 
-    // resto do seu código...
-    
+    merge(v, n); // ordena
+
+    cout << "Vetor ordenado:\n";
+    for (int i = 0; i < n; i++) {
+        cout << v[i] << " ";
+    }
+    cout << endl;
+
     delete[] v;
     return 0;
 }
 
-
-// Tempo para rodar 10000000000 sem a prevencao do caso n ==2 ->  0m59.170s
-//Tempo para rodar 10000000000 usando caso n ==2 -> 0m59.310s

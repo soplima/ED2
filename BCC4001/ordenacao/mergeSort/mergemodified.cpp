@@ -11,7 +11,7 @@ void swap(int *v, int a, int b){
 //recursivamente dividindo ate ficar com somente um elemento de cada
 void merge(int *v, int n){
     if(n == 1) return;
-    //se tiver apenas dois elementos, so comparar e trocar. nao precisa de recursao
+    // se tiver apenas dois elementos, so comparar e trocar. nao precisa de recursao
     if(n == 2){
         if(v[0] > v[1]){
             swap(v, 0, 1);
@@ -22,8 +22,11 @@ void merge(int *v, int n){
     int *e = new int[meio];
     int *d = new int[n - meio];
 
-    for (int i = 0; i < meio; i++) e[i] = v[i];
-    for(int i = 0; i < n - meio; i++) d[i] = v[meio + i];
+    memcpy(e, v, meio * sizeof(int));
+    //void* memcpy(void* destino, const void* origem, size_t num_bytes);
+    memcpy(d, v + meio, n-meio * sizeof(int));
+    //void* memcpy(void* destino, const void* origem, size_t num_bytes);
+
 
     merge(e, meio);
     merge(d, n - meio);
@@ -82,5 +85,5 @@ int main(int argc, char *argv[]) {
 }
 
 
-// Tempo para rodar 10000000000 sem a prevencao do caso n ==2 ->  0m59.170s
-//Tempo para rodar 10000000000 usando caso n ==2 -> 0m59.310s
+// Tempo para rodar 10000000000 com o alg original ->  58.540s
+//Tempo para rodar 10000000000 com o alg modificado ->  1m0.615s
