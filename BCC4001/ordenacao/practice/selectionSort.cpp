@@ -11,14 +11,14 @@ using namespace std;
 //funcao swap
 //funcao selectionSort aplicando as duas
 
-int min(int* vec, int first, int last){
-    int min = first;
-    for(int i = first + 1; i < last; i ++){
-        if(vec[i] < vec[min]){
-            min = i;
+int max(int* vec, int first, int last){
+    int max = first;
+    for(int i = first + 1; i <= last; i ++){
+        if(vec[i] > vec[max]){
+            max = i;
         }
     }
-    return min;
+    return max;
 }
 
 void swap(int* vec, int a, int b){
@@ -28,9 +28,9 @@ void swap(int* vec, int a, int b){
 }
 
 void selectionSort(int* vec , int n){
-    for(int i = 0; i < n - 1; i ++){
-        int vmin = min(vec, i, n-1);
-        swap(vec, vmin, i);
+    for(int i = n-1; i > 0; i --){
+        int vmax = max(vec, 0, i); // encurta pra direita entao i na direita
+        swap(vec, vmax, i);
     }
 }
 
