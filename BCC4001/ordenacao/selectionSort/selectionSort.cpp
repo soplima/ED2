@@ -28,8 +28,7 @@ void swap(int *v, int a, int b){
 
 void selectionSort(int *v, int n){
     for(int i = n-1; i>0; i--){
-        int vmax = max(v, 0, i); //Vai do final (i = n-1) para o início (i > 0).
-        //troca o maior valor encontrado com i = ultima pos
+        int vmax = max(v, 0, i); // vai encurtando pra esquerda. o i cresce pra esquerda porque ordena decrescnete
         swap(v, vmax, i);
     }
 }
