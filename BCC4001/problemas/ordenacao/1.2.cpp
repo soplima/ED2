@@ -29,9 +29,9 @@ int maior(std::vector<int> &v, int first, int last){
 
 int k_maior(std::vector<int> &v, int k){
     int n = v.size();
-    for(int i = 0; i < k; i++){
-        int imax = maior(v, i, n-1);
-        std::swap(v[i],v[imax]);
+    for(int i = 0; i < n; i++){
+        int vmax = maior(v, i, n-1);
+        std::swap(v[i], v[vmax]);
     }
     return v[k-1];
 }
