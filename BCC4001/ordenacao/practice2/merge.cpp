@@ -13,7 +13,7 @@ void merge(int *v, int p, int q, int r){
     int i = 0, j = 0, k= p;
 
     while(i < n1 && j < n2){
-        if(e[i] < d[j]){
+        if(e[i] > d[j]){  //retornar invertido
             v[k++] = e[i++];
         }else{
             v[k++] = d[j++];

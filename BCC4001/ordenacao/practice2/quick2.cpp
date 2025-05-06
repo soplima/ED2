@@ -20,7 +20,7 @@ int partition(int* v, int n){
     int pivot = v[n-1];
     int i = -1;
     for(int j = 0; j <= n-1; j++){
-        if(v[j] < pivot){
+        if(v[j] > pivot){ //return in reverse order
             i++;
             swap(v, i, j);
         }
@@ -39,7 +39,7 @@ void quickSort(int* v, int left, int right){
 }
 
 void QuickSort(int* v, int n){
-    quickSort(v, 0 ,n-1);
+    quickSort(v, 0, n-1);
 }
 
 int *vetor_ordenado(int n)

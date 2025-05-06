@@ -11,7 +11,7 @@
 int max(int* v, int first, int last){
     int max = first;
     for(int i = first+1; i<=last; i++){
-        if(v[max] < v[i]){
+        if(v[max] > v[i]){ //inverter para devolver ao contrario
             max = i;
         }
     }
