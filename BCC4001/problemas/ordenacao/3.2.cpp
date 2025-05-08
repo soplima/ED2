@@ -15,7 +15,7 @@ public:
     // que a função sort possa ordenar um vetor de alunos pelo campo ra.
 
     bool operator<(const Aluno& outro){
-        return ra < outro.ra;
+       return ra < outro.ra;
     }
 
     void imprimir(){

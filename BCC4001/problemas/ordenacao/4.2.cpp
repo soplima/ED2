@@ -10,7 +10,15 @@
 // os elementos no vetor de saída não precisam preservar a ordem da entrada.
 std::vector<int> remover_duplicatas(std::vector<int> &v){
     std::vector<int> s;
+    for(int i = 0; i < v.size(); i++){
 
+    bool existente = std::find(s.begin(), s.end(), v[i]) != s.end();
+
+    if(!existente){
+        s.push_back(v[i]);
+        }
+    }
+    
     return s;
 }
 
