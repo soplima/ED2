@@ -11,9 +11,9 @@ using namespace std;
 vector<string> ordenar_por_tamanho(vector<string> &v){
     vector<string> s;
     s = v;
-    
-    sort(s.begin(), s.end(), [](const string &a, const string &b) {
-        return a.size() < b.size();
+
+    std::sort(s.begin(), s.end(), [](const string& a, const string &b){
+        return a .size() < b.size();
     });
 
     return s;
