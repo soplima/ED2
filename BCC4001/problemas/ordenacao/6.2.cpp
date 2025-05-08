@@ -10,16 +10,12 @@ struct Pais{
     Pais(const string& nome, int o, int p, int b)
         : nome(move(nome)), ouro(o), prata(p), bronze(b){}
 
-        bool operator<(const Pais& outro) const {
-            if (ouro != outro.ouro)
-                return ouro > outro.ouro; 
-            if (prata != outro.prata)
-                return prata > outro.prata; 
-            if (bronze != outro.bronze)
-                return bronze > outro.bronze; 
-            return nome < outro.nome; 
+        bool operator<(const Pais& outro){
+            if(ouro!= outro.ouro) return ouro > outro.ouro;
+            if(prata != outro.prata) return prata > outro.prata;
+            if(bronze != outro.bronze) return bronze > outro.bronze;
+            return nome < outro.nome;
         }
-
     void print(){
         cout << nome << " " << ouro << " " << prata << " " << bronze << "\n";
     }
