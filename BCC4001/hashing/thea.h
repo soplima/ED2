@@ -6,19 +6,67 @@
 class TabHashEndAberto {
 public:
     //Construtor: inicializa uma nova tabela com tamanho m
-    TabHashEndAberto(int tamanho, float limiar = 0.5);
+    // Construtor da classe TabHashEndAberto, com parâmetros: tamanho da tabela e limiar de carga (padrão 0.5)
+    TabHashEndAberto(int tamanho, float limiar = 0.5) {
+        // Atributo 'm' armazena o tamanho da tabela hash
+        this->m = tamanho;
+        // Inicializa o número de elementos na tabela como zero (tabela vazia)
+        this->n = 0;
+        // Define o limiar de carga (fator de ocupação da tabela), que pode ser usado para decidir quando redimensionar
+        this->limiar = limiar;
+        // Contador de quantas vezes a tabela foi redimensionada
+        this->redims = 0;
+        // Aloca dinamicamente um vetor de 'Elemento' com 'm' posições para representar a tabela hash
+        this->tabela = new Elemento[this->m];
+        // Inicializa cada posição da tabela com o estado 'LIVRE', indicando que estão disponíveis para inserção
+        for (int i = 0; i < this->m; i++) {
+            this->tabela[i].estado = Estado::LIVRE;
+        }
+        this->invalido = std::make_pair(-1, -1); //mostrando que e um elemento invalido. retorna um par de inteiros.
+    }
+
 
     //Destrutor: libera todos os recursos alocados para a tabela
-    ~TabHashEndAberto(); 
+    ~TabHashEndAberto(){
+        delete[]this->tabela;
+    }
     
     //Insere um novo par (chave, valor) na tabela
-    void inserir(int chave, int valor);
+    void inserir(int chave, int valor){
+        int h = buscar_pos(chave);
+        if(h >= 0){
+            this->tabela[h].valor = valor;
+            return;
+        }
+
+        if((this-> n+1 )/ this->m > this->limiar){
+            this->redimensionar(this->m * 2);
+            this->redims++;
+        }
+
+        int k = 0;
+        h = this->hash(chave, k);
+        while(this->tabela[h].estado == Estado::OCUPADO){
+            k++;
+            h = this->hash(chave, k);
+        }
+        this->tabela[h].chave = chave;
+        this->tabela[h].valor = valor;
+        this->tabela[h].estado = Estado::OCUPADO;
+    }
     
     //Remove o par com a chave da tabela
     void remover(int chave);
     
     //Busca o valor associado a chave na tabela
-    std::pair<int,int> buscar(int chave);
+    std::pair<int,int> buscar(int chave){
+        int pos = buscar_pos(chave);
+        if(pos >= 0){
+            return std::make_pair(this->tabela[pos].chave,
+                                  this->tabela[pos].valor);
+        }
+        return this->invalido;
+    }
     
     //Imprime a tabela
     void imprimir(){
@@ -74,13 +122,27 @@ private:
 
     Elemento *tabela; // tabela hash
 
-    int hash(int chave, int k); //função hash
+    int hash(int chave, int k){ //função hash
+        return ((chave % this->m ) + k) % m;
+    }
 
     // redimensiona a tabela para o novo tamanho (novo_m)
     void redimensionar(int novo_m); 
 
     //retorna a posição que a chave ocupa na tabela. 
     //(ou -1 se a chave não estiver na tabela)
-    int buscar_pos(int chave);
+    int buscar_pos(int chave){
+        int k = 0;
+        int h = this->hash(chave, k);
+        while(this->tabela[h].estado != Estado::LIVRE){
+            if((this->tabela[h].estado == Estado::OCUPADO)
+            && (this->tabela[h].chave == chave)){
+                return h;
+            }
+            k++;
+            h = this->hash(chave, k);
+        }
+        return -1;
+    }
     
 };
