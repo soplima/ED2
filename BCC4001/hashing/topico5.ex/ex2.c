@@ -1,17 +1,17 @@
 #include <stdio.h>
 
-//Uma forma eficiente de implementar a função de 
-//hashing sugerida acima é utilizando o Método de Horner.
-// 2x^3 + 3x^2 + 4x + 5 = ((2x + 3)x + 4)x + 5
-unsigned int string_hash(char* string, int M){
-    int hash = 0;
-    int k = 31;
-    for(int i = 0; string[i] != '\0'; i++){
-        hash = hash * k + string[i];
-    }
-    return hash % M;
-}
+//2x 3 + 3x 2 + 4x + 5 = ((2x + 3)x + 4)x + 5
 
+//!Considere que a string é terminada em ‘\0’ (null-terminated).
+
+unsigned int string_hash(char* string, int M){
+int k = 31;
+int h = 0;
+    for (int i = 0; string[i] != 0; i++){
+        h = (h * k ) + string[i]; 
+    }
+    return h % M;
+}
 
 int main() {
     int x;
