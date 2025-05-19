@@ -63,11 +63,11 @@ int main(int argc, char** argv){
 
     int* v = vetor_aleatorio(n, 1);
 
-    imprimir_vetor(v, n);
+    //imprimir_vetor(v, n);
 
     SelectionSort(v, n);
 
-    imprimir_vetor(v, n);
+    //imprimir_vetor(v, n);
 
     delete[] v;
 

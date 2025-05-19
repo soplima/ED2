@@ -63,9 +63,9 @@ int main(int argc, char** argv){
     //int v[] = {7, 4, 6, 5, 0, 1};
     int* v = vetor_aleatorio(n, n*100, 99);
 
-    imprimir_vetor(v, n);
+    //imprimir_vetor(v, n);
 
     mergeSort(v, 0, n-1);
 
-    imprimir_vetor(v, n);
+    //imprimir_vetor(v, n);
 }

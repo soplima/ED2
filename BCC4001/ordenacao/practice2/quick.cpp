@@ -79,9 +79,9 @@ int main(int argc, char **argv)
 
     QuickSort(v, n);
 
-    for (int i = 0; i < n; i++)
-        cout << v[i] << " ";
-    cout << endl;
+    // for (int i = 0; i < n; i++)
+    //     cout << v[i] << " ";
+    // cout << endl;
 
     return 0;
 }
