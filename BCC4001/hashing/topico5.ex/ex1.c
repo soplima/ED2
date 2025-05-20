@@ -9,17 +9,23 @@
 
 //!Considere que a string é terminada em ‘\0’ (null-terminated).
 
+//!Aplicacao do metodo polinomial
+
 unsigned int string_hash(char* string, int M){
     //dividir a string eem tokens 
     //somar e multiplicar cada token 
     int k = 31;
     int h = 0;
-    for(int i = 0; string[i] != '\0'; i++){
-        h = (h * k) + string[i];
-        // (0 * 31) + 65
-        // (65 * 31) + 66
-        //(2081 * 31) + 67
+    int len = strlen(string);
+
+    for (int i = 0; i < len; i++) {
+    int power = 1;
+        for (int j = 0; j < len - i - 1; j++) {
+            power *= k;
+        }
+        h += string[i] * power;
     }
+
     return h % M;
 }
 

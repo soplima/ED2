@@ -4,6 +4,7 @@
 
 //!Considere que a string é terminada em ‘\0’ (null-terminated).
 
+//!Aplicacao do metoddo Horner
 unsigned int string_hash(char* string, int M){
 int k = 31;
 int h = 0;
