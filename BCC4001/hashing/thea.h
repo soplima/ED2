@@ -136,7 +136,29 @@ public:
         return totalElementos / numClusters;
     }
 
+    float custo_bem_sucedida() const{
+        int elementos = 0;
+        int clusters = 0;
+        int total = 0;
 
+
+        for(int i = 0; i < this->m; i++){
+            if(this->tabela[i].estado == Estado::OCUPADO){
+                elementos++;
+            }else{
+                if(elementos > 0){
+                total += std::max(elementos / 2.0f, 1.0f);
+                clusters++;
+                elementos = 0;
+                }
+            }     
+        }
+        if (elementos > 0) {
+        total += std::max(elementos / 2.0f, 1.0f);
+        clusters++;
+    }
+        return total / clusters;  
+    }
 
     //Busca o valor associado a chave na tabela
     std::pair<int,int> buscar(int chave){
