@@ -10,7 +10,7 @@ unordered_map<string, int> stringcount(const vector<string>& v) {
     unordered_map<string, int> hash;
 
     for (const string& x : v) {
-        hash[x]++;  // se x não existir, inicializa com 0 e incrementa para 1
+        hash[x]++;  
     }
     return hash;
 }
