@@ -31,13 +31,30 @@ template <typename C, typename V>
 class ABB
 {
     public:
-        ABB();
+        ABB(){
+            this->n = 0;
+            this->raiz = nullptr;
+        }
         ~ABB() { delete raiz; }
 
         //insere o par (chave, valor) na árvore
         void inserir(C chave, V valor);
         //retorna o endereço do nó com a chave especificada
-        NoABB<C, V>* buscar(C chave);
+        NoABB<C, V>* buscar(C chave){
+            NoABB<C, V>* n = this->raiz;
+            while(n!= nullptr){
+                if(chave == n->chave){
+                    break;
+                }
+                if(chave == n->chave){
+                    n = n->esq;
+                }
+                else{
+                    n = n->dir;
+                }
+            }
+            return n;
+        }
         //remove o nó com a chave especificada
         void remover(C chave);
         //imprime a árvore
