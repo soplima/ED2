@@ -37,16 +37,35 @@ class ABB
         }
         ~ABB() { delete raiz; }
 
-        //insere o par (chave, valor) na árvore
-        void inserir(C chave, V valor);
-        //retorna o endereço do nó com a chave especificada
+        void inserir(NoABB<C, V>*& A, C chave, V valor) {
+            if (A == nullptr) {
+                A = Criar(chave, valor);
+                return;
+            }
+
+            if (chave < A->chave) {
+                inserir(A->esq, chave, valor);
+            } else {
+                inserir(A->dir, chave, valor);
+            }
+        }
+
+
+        NoABB<C, V>* Criar(C chave, V valor, NoABB<C, V>* esq = nullptr, NoABB<C, V>* dir = nullptr) {
+            NoABB<C, V>* novo = new NoABB<C, V>(chave, valor);
+            novo->esq = esq;
+            novo->dir = dir;
+
+            return novo;
+        }
+
         NoABB<C, V>* buscar(C chave){
             NoABB<C, V>* n = this->raiz;
             while(n!= nullptr){
                 if(chave == n->chave){
                     break;
                 }
-                if(chave == n->chave){
+                if(chave <= n->chave){
                     n = n->esq;
                 }
                 else{
