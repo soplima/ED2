@@ -1,9 +1,5 @@
 #include <algorithm>
-
-typedef struct noh_ab{
-    struct noh_ab *esq, *dir;
-    int chave;
-}NOH_AB;
+#include "BST_tree.h"
 
 int altura(NOH_AB *A){
     if(!A)return 0;
